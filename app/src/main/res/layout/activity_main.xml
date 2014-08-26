@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <!-- This nested layout contains views of its own -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+        <!-- Set OnClickListener to trigger results when pressed -->
+        <!-- Shows an image from your drawable resources -->
+        <Button
+            android:id="@+id/add_new_contact"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif-light"
+            android:background="#0099CC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_launcher"
+            android:text="@string/add_new_contact"/>
+
+        <TextView
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#0099CC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/all_contacts" />
+        <!-- Closing tag for the horizontal nested layout -->
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.1dp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/darker_gray"/>
+    <!-- Displays keyboard when touched -->
+
+    <!-- List whose dataset is defined in code with an adapter -->
+    <ListView
+        android:textSize="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/main_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
