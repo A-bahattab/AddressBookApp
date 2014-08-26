@@ -5,7 +5,7 @@ package com.myandroid.itsbryan.addressbookapp.domain;
  */
 
 public class Contact {
-    private int id;
+    private int _id;
     private String name;
     private String surname;
     private String emailAddress;
@@ -15,7 +15,7 @@ public class Contact {
     private Contact(){}
 
     public Contact(Builder builder) {
-        this.id = builder.id;
+        this._id = builder._id;
         this.name = builder.name;
         this.surname = builder.surname;
         this.emailAddress = builder.emailAddress;
@@ -24,7 +24,7 @@ public class Contact {
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public String getName() {
@@ -48,7 +48,7 @@ public class Contact {
     }
 
     public static class Builder {
-        public int id;
+        public int _id;
         public String name;
         public String surname;
         public String emailAddress;
@@ -59,8 +59,8 @@ public class Contact {
             this.phoneNumber = phoneNumber;
         }
 
-        public Builder setId(int id) {
-            this.id = id;
+        public Builder setId(int _id) {
+            this._id = _id;
             return this;
         }
 

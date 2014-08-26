@@ -7,16 +7,58 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.myandroid.itsbryan.addressbookapp.R;
+import com.myandroid.itsbryan.addressbookapp.domain.Contact;
+import com.myandroid.itsbryan.addressbookapp.repository.DataSourceDAO;
+import com.myandroid.itsbryan.addressbookapp.repository.Impl.DataSourceDAOImpl;
 
 public class ContactDetailsActivity extends Activity {
+    private DataSourceDAO dao = new DataSourceDAOImpl(this);
+    private TextView nameTV;
+    private TextView surnameTV;
+    private TextView phoneTV;
+    private TextView emailTV;
+    private TextView addressTV;
+    private int contactId = 0;
+    String email = "";
+    String address = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
 
+        /*GET CONTACT FROM DB*/
+        try
+        {
+            contactId = this.getIntent().getExtras().getInt("contactID");
+        }
+        catch (Exception ex){
+            Toast.makeText(this, "An error occurred, could not retrieve contact details", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final Contact db_contact = dao.findContactByID(contactId);
+
+        /*BIND IDs TO TEXT VIEW OBJECTS*/
+        nameTV = (TextView)findViewById(R.id.cd_name_tv);
+        surnameTV = (TextView)findViewById(R.id.cd_surname_tv);
+        phoneTV = (TextView)findViewById(R.id.cd_phone_tv);
+        emailTV = (TextView)findViewById(R.id.cd_email_tv);
+        addressTV = (TextView)findViewById(R.id.cd_address_tv);
+
+        email = db_contact.getEmailAddress().toString().length() > 0 ? db_contact.getEmailAddress().toString() : "Email Address" ;
+        address = db_contact.getHomeAddress().toString().length() > 0 ? db_contact.getHomeAddress().toString() : "Home Address" ;
+
+        /*SET VALUES IN TEXT VIEWS*/
+        nameTV.setText(db_contact.getName());
+        surnameTV.setText(db_contact.getSurname());
+        phoneTV.setText(db_contact.getPhoneNumber());
+        emailTV.setText(email);
+        addressTV.setText(address);
 
         Button backToList = (Button)findViewById(R.id.cd_back1);
         backToList.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +73,17 @@ public class ContactDetailsActivity extends Activity {
         backToList1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Intent intent = new Intent(ContactDetailsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnDelete = (Button)findViewById(R.id.cd_delete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dao.deleteContact(db_contact);
+                Toast.makeText(ContactDetailsActivity.this, "Contact successfully deleted!", Toast.LENGTH_LONG).show();
                 final Intent intent = new Intent(ContactDetailsActivity.this, MainActivity.class);
                 startActivity(intent);
             }

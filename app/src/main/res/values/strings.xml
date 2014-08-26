@@ -12,6 +12,7 @@
     <string name="email_address">Email Address</string>
     <string name="home_address">Physical Address</string>
     <string name="add_contact">Add Contact</string>
+    <string name="delete_contact">Delete Contact</string>
     <string name="add_new_contact">+</string>
     <string name="view_all">View All</string>
     <string name="cancel">Cancel</string>

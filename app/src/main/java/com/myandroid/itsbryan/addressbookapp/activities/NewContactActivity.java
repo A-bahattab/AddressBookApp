@@ -69,21 +69,7 @@ public class NewContactActivity extends Activity {
 
                 /*PERSIST TO THE DB*/
                 dao.createContact(contact);
-
-                /*TEST IF DATA WAS ADDED*/
-                int size = dao.getNumberOfContacts();
-                Contact db_contact = dao.findContactByID(size);
-
-                Toast.makeText(
-                        NewContactActivity.this,
-                        "Contact successfully saved!"
-                                + db_contact.getId() + "\n"
-                                + db_contact.getName() + " "
-                                + db_contact.getSurname() + "\n"
-                                + db_contact.getPhoneNumber() + "\n"
-                                + db_contact.getEmailAddress() + "\n"
-                                + db_contact.getHomeAddress() + "\n",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(NewContactActivity.this, "Contact Successfully Added", Toast.LENGTH_LONG).show();
 
                 final Intent intent = new Intent(NewContactActivity.this, MainActivity.class);
                 startActivity(intent);

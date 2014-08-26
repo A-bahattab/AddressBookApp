@@ -2,42 +2,52 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="75dp">
+
+    <!-- ID -->
+    <TextView
+        android:id="@+id/lv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="5sp"
+        android:visibility="invisible"/>
 
     <!-- FIRST NAME -->
     <TextView
         android:id="@+id/lv_name"
-        android:textSize="15sp"
+        android:textSize="10sp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:fontFamily="sans-serif-light"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="#0099CC"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_height="match_parent"
         android:text="Name "/>
 
     <!-- LAST NAME -->
     <TextView
         android:id="@+id/lv_surname"
-        android:textSize="15sp"
+        android:textSize="12sp"
+        android:layout_gravity="center_vertical"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/lv_name"
+        android:layout_toEndOf="@+id/lv_name"
         android:fontFamily="sans-serif-thin"
         android:textColor="#0099CC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Surname"/>
+        android:text=" Surname"
+        android:visibility="invisible"/>
 
     <!-- PHONE NUMBER -->
     <TextView
         android:id="@+id/lv_number"
-        android:textSize="15sp"
+        android:textSize="9sp"
         android:layout_centerVertical="true"
-        android:fontFamily="sans-serif-thin"
         android:layout_alignParentRight="true"
+        android:fontFamily="sans-serif-thin"
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
+        android:layout_height="match_parent"
         android:text="+27(73)120 4882"/>
  </RelativeLayout>

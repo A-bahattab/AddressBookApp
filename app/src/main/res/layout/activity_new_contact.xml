@@ -65,6 +65,7 @@
                 <EditText
                     android:textSize="12sp"
                     android:fontFamily="sans-serif-light"
+                    android:inputType="textPersonName"
                     android:id="@+id/name_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,6 +84,7 @@
                 <EditText
                     android:textSize="12sp"
                     android:fontFamily="sans-serif-light"
+                    android:inputType="phone"
                     android:id="@+id/phone_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,6 +95,7 @@
                     android:textSize="12sp"
                     android:fontFamily="sans-serif-light"
                     android:id="@+id/email_edittext"
+                    android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:height="35dp"
@@ -101,6 +104,9 @@
                 <EditText
                     android:textSize="12sp"
                     android:fontFamily="sans-serif-light"
+                    android:inputType="textPostalAddress"
+                    android:singleLine="false"
+                    android:maxLines="5"
                     android:id="@+id/homeaddress_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
