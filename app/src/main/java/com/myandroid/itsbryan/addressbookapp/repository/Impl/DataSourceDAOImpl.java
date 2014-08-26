@@ -62,7 +62,7 @@ public class DataSourceDAOImpl implements DataSourceDAO{
     }
 
     @Override
-    public Contact findContactDetailsByID(int id) {
+    public Contact findContactByID(int id) {
         try {
             open();
             Cursor contactsList = database.query(
@@ -84,10 +84,10 @@ public class DataSourceDAOImpl implements DataSourceDAO{
             contactsList.moveToFirst();
             Contact contact = new Contact.Builder(contactsList.getString(2))
                     .setId(contactsList.getInt(0))
-                    .setName(contactsList.getString(1))
-                    .setSurname(contactsList.getString(3))
-                    .setEmailAddress(contactsList.getString(4))
-                    .setHomeAddress(contactsList.getString(5))
+                    .name(contactsList.getString(1))
+                    .surname(contactsList.getString(3))
+                    .emailAddress(contactsList.getString(4))
+                    .homeAddress(contactsList.getString(5))
                     .build();
             contactsList.moveToLast();
 

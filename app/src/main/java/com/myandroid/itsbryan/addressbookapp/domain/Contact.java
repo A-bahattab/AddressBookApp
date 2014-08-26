@@ -64,38 +64,38 @@ public class Contact {
             return this;
         }
 
-        public Builder setName(String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder setSurname(String surname) {
+        public Builder surname(String surname) {
             this.surname = surname;
             return this;
         }
 
-        public Builder setEmailAddress(String emailAddress) {
+        public Builder emailAddress(String emailAddress) {
             this.emailAddress = emailAddress;
             return this;
         }
 
-        public Builder setPhoneNumber(String phoneNumber) {
+        public Builder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
 
-        public Builder setHomeAddress(String homeAddress) {
+        public Builder homeAddress(String homeAddress) {
             this.homeAddress = homeAddress;
             return this;
         }
 
         public Builder clone(Contact contact){
             this.setId(contact.getId());
-            this.setName(contact.getName());
-            this.setSurname(contact.getSurname());
-            this.setPhoneNumber(contact.getPhoneNumber());
-            this.setEmailAddress(contact.getEmailAddress());
-            this.setHomeAddress(contact.getHomeAddress());
+            this.name(contact.getName());
+            this.surname(contact.getSurname());
+            this.phoneNumber(contact.getPhoneNumber());
+            this.emailAddress(contact.getEmailAddress());
+            this.homeAddress(contact.getHomeAddress());
             return this;
         }
 

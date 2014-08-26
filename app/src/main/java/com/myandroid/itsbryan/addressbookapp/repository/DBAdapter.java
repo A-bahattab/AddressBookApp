@@ -18,15 +18,15 @@ public class DBAdapter extends SQLiteOpenHelper{
     public static final String COLUMN_HOME_ADDRESS = "homeAddress";
 
     /*DATABASE NAME AND VERSION VARIABLES*/
-    public static final String TABLE_CONTACTS = "contacts";
-    private static final String DATABASE_NAME = "contacts.db";
+    public static final String TABLE_CONTACTS = "aib_contacts";
+    private static final String DATABASE_NAME = "aib_contacts.db";
     private static final int DATABASE_VERSION = 1;
 
     /*DATABASE CREATION STRING*/
     public static final String CREATE_CONTACTS_TABLE = "create table IF NOT EXISTS "
             + TABLE_CONTACTS + "("
             + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_FIRST_NAME + "text not null, "
+            + COLUMN_FIRST_NAME + " text not null, "
             + COLUMN_LAST_NAME + " text not null, "
             + COLUMN_PHONE_NUMBER + " text not null, "
             + COLUMN_EMAIL_ADDRESS + " , "

@@ -17,13 +17,8 @@ import com.myandroid.itsbryan.addressbookapp.repository.ContactListAdapter;
 
 
 public class MainActivity extends Activity {
-  /*  private ListView contactsListView;
+    private ListView contactsListView;
     private ContactListAdapter contactsAdapter;
-    private EditText name_et = (EditText)findViewById(R.id.name_edittext);
-    private EditText surname_et = (EditText)findViewById(R.id.surname_edittext);
-    private EditText phone_et = (EditText)findViewById(R.id.phone_edittext);
-    private EditText email_et = (EditText)findViewById(R.id.email_edittext);
-    private EditText address_et = (EditText)findViewById(R.id.homeaddress_edittext);*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +28,16 @@ public class MainActivity extends Activity {
         /*RETRIEVE DATA FROM DATABASE TO LIST*/
 
 
-        /*BIND ADAPTER TO LIST*
+        /*BIND ADAPTER TO LIST*/
         contactsListView = (ListView)findViewById(R.id.main_lv);
         contactsAdapter = new ContactListAdapter(this, null, getLayoutInflater());
-        contactsListView.setAdapter(contactsAdapter);*/
+        contactsListView.setAdapter(contactsAdapter);
 
         Button addNewContact = (Button)findViewById(R.id.add_new_contact);
         addNewContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*GET VALUES FROM COMPONENTS AND VALIDATE THEM*/
-             /*   if (name_et.getText().length() == 0 || surname_et.getText().length() == 0 || phone_et.getText().length() == 0 )
-                {
-                    Toast.makeText(MainActivity.this, "Please make sure all the required fields have been filled", Toast.LENGTH_LONG).show();
-                    return;
-                }*/
                 final Intent intent = new Intent(MainActivity.this, NewContactActivity.class);
                 startActivity(intent);
             }

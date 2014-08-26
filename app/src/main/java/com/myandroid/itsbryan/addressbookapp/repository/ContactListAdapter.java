@@ -10,14 +10,18 @@ import android.widget.TextView;
 import com.myandroid.itsbryan.addressbookapp.R;
 import com.myandroid.itsbryan.addressbookapp.domain.Contact;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by its.Bryan on 8/20/2014.
  */
 public class ContactListAdapter extends BaseAdapter {
     private Context context;
-    private List<Contact> contactList;
+    private List<Contact> contactList = new ArrayList<Contact>();
     private LayoutInflater layoutInflater;
 
     public ContactListAdapter(Context context, List<Contact> list, LayoutInflater layoutInflater){
@@ -28,7 +32,7 @@ public class ContactListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return contactList.size();
+        return 0;
     }
 
     @Override

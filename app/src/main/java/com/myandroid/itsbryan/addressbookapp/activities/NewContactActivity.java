@@ -3,19 +3,40 @@ package com.myandroid.itsbryan.addressbookapp.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.myandroid.itsbryan.addressbookapp.R;
+import com.myandroid.itsbryan.addressbookapp.domain.Contact;
+import com.myandroid.itsbryan.addressbookapp.repository.DataSourceDAO;
+import com.myandroid.itsbryan.addressbookapp.repository.Impl.DataSourceDAOImpl;
 
 public class NewContactActivity extends Activity {
+    private DataSourceDAO dao = new DataSourceDAOImpl(this);
+    private EditText name_et;
+    private EditText surname_et;
+    private EditText phone_et;
+    private EditText email_et;
+    private EditText address_et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_contact);
+
+        /*MAP TEXT_VIEW IDs TO VARIABLES*/
+        name_et = (EditText)findViewById(R.id.name_edittext);
+        surname_et = (EditText)findViewById(R.id.surname_edittext);
+        phone_et = (EditText)findViewById(R.id.phone_edittext);
+        email_et = (EditText)findViewById(R.id.email_edittext);
+        address_et = (EditText)findViewById(R.id.homeaddress_edittext);
 
         Button cancelBtn = (Button)findViewById(R.id.nc_cancel);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -31,11 +52,43 @@ public class NewContactActivity extends Activity {
         addContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent intent = new Intent(NewContactActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                if (name_et.getText().length() == 0 || surname_et.getText().length() == 0 || phone_et.getText().length() == 0 )
+                {
+                    Toast.makeText(NewContactActivity.this, "Missing Information \nPlease make sure all the required fields have been filled in", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                /*GET VALUES AND ADD OBJECT TO DB*/
+                Contact contact = new Contact.Builder(phone_et.getText().toString())
+                        .name(name_et.getText().toString())
+                        .surname(surname_et.getText().toString())
+                        .emailAddress(email_et.getText().toString())
+                        .homeAddress(address_et.getText().toString())
+                        .build();
+
+                /*PERSIST TO THE DB*/
+                dao.createContact(contact);
+
+                /*TEST IF DATA WAS ADDED*/
+                int size = dao.getNumberOfContacts();
+                Contact db_contact = dao.findContactByID(size);
+
+                Toast.makeText(
+                        NewContactActivity.this,
+                        "Contact Details \n\n"
+                                + db_contact.getId() + "\n"
+                                + db_contact.getName() + " "
+                                + db_contact.getSurname() + "\n"
+                                + db_contact.getPhoneNumber() + "\n"
+                                + db_contact.getEmailAddress() + "\n"
+                                + db_contact.getHomeAddress() + "\n",
+                        Toast.LENGTH_LONG).show();
+
+               // final Intent intent = new Intent(NewContactActivity.this, MainActivity.class);
+               // startActivity(intent);
             }
         });
-
 
         Button backBtn = (Button)findViewById(R.id.nc_back);
         backBtn.setOnClickListener(new View.OnClickListener() {
