@@ -76,7 +76,7 @@ public class NewContactActivity extends Activity {
 
                 Toast.makeText(
                         NewContactActivity.this,
-                        "Contact Details \n\n"
+                        "Contact successfully saved!"
                                 + db_contact.getId() + "\n"
                                 + db_contact.getName() + " "
                                 + db_contact.getSurname() + "\n"
@@ -85,8 +85,8 @@ public class NewContactActivity extends Activity {
                                 + db_contact.getHomeAddress() + "\n",
                         Toast.LENGTH_LONG).show();
 
-               // final Intent intent = new Intent(NewContactActivity.this, MainActivity.class);
-               // startActivity(intent);
+                final Intent intent = new Intent(NewContactActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
